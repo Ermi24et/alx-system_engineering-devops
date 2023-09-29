@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# displaying the content of directory
+dir_name=$(ls ./)
+
+for mem in $dir_name;
+do
+    echo "$mem" | cut -d "-" -f 2;
+done
