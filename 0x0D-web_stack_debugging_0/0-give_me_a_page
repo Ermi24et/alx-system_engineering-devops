@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# get appache to run on the container
+
+sudo /etc/init.d/apache2 restart
