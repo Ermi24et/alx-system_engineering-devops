@@ -4,7 +4,7 @@
 sudo apt-get update
 sudo apt-get -y install nginx
 
-# mkdir /etc/nginx/html
+mkdir /etc/nginx/html
 touch /etc/nginx/html/index.html
 
 echo "Hello Wolrd!" > /etc/nginx/html/index.html
