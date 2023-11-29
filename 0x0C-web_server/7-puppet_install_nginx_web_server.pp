@@ -1,6 +1,6 @@
 # configuring my server with puppet
 package { 'nginx':
-  ensure => 'installed',
+  ensure => installed,
 }
 
 file_line { 'redirecting':
@@ -11,7 +11,6 @@ file_line { 'redirecting':
 }
 
 file { '/var/www/html/index.html':
-  file    => 'file',
   content => 'Hello World!',
 }
 
