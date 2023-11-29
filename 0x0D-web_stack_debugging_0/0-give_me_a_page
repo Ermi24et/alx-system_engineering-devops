@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 # get appache to run on the container
 
+echo "Listen 8080" >> /etc/apache2/ports.conf
 echo "ServerName localhost" >> /etc/apache2/sites-available/000-default.conf
 service apache2 start
