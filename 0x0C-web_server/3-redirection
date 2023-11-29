@@ -8,7 +8,7 @@ mkdir /etc/nginx/html
 touch /etc/nginx/html/index.html
 
 echo "Hello Wolrd!" > /etc/nginx/html/index.html
-printf %s "server {
+echo "server {
     listen 80;
     listen [::]:80 default_server;
     root /etc/nginx/html;
