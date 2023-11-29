@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+# a script used to configure a Nginx server
+
+sudo apt-get update
+sudo apt-get -y install nginx
+
+mkdir /etc/nginx/html
+touch /etc/nginx/html/index.html
+
+echo "Hello Wolrd!" > /etc/nginx/html/index.html
+touch /etc/nginx/html/404_error.html
+echo "Ceci n'est pas une page" > /etc/nginx/html/404_error.html
+
+echo "server {
+    listen 80;
+    location /redirect_me {
+        return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
+    }
+
+    error_page 404 /404_error.html;
+    location /404 {
+      root /etc/nginx/html;
+      internal;
+    }
+}" > /etc/nginx/sites-available/default
+
+service nginx restart
