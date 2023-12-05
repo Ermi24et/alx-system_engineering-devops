@@ -1,7 +1,7 @@
 # a manifest to install nginx
 
 class { 'nginx':
-  ensure => installed,
+  ensure => 'installed',
 }
 
 file { 'etc/nginx/sites-available/default':
@@ -15,7 +15,7 @@ file { 'etc/nginx/sites-available/default':
     	index index.html index.htm;
 
     	location /redirect_me {
-    	    return 301 https://www.youtube.com/watch?v=QH2-TGUwu4;
+    	    return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
     	}
 
     	error_page 404 /404_error.html;
