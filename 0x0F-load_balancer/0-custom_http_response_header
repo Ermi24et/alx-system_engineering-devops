@@ -1,14 +1,11 @@
 #!/usr/bin/env bash
 # configure Nginx so that its HTTP response contains a custom headers
 
-sudo apt-get update
-sudo apt-get -y install nginx
-sudo service nginx start
-"""
-# mkdir /etc/nginx/html
-server_hostname=$(hostname)
-touch /etc/nginx/html/index.html
+apt-get update
+apt-get -y install nginx
 
+mkdir -p /etc/nginx/html
+touch /etc/nginx/html/index.html
 echo "Hello World!" > /etc/nginx/html/index.html
 touch /etc/nginx/html/404_error.html
 echo "Ceci n'est pas une page" > /etc/nginx/html/404_error.html
@@ -16,21 +13,15 @@ echo "Ceci n'est pas une page" > /etc/nginx/html/404_error.html
 echo "server {
     listen 80 default_server;
     listen [::]:80 default_server;
-
+    add_header X-Served-By $HOSTNAME;
     root /etc/nginx/html;
     index index.html index.htm;
-
-    server_name _;
-
-    location / {
-        add_header X-Served-By $server_hostname;
-    }
 
     location /redirect_me {
         return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
     }
 
-    	error_page 404 /404_error.html;
+    error_page 404 /404_error.html;
     location /404 {
         root /etc/nginx/html;
         internal;
@@ -38,7 +29,3 @@ echo "server {
 }" > /etc/nginx/sites-available/default
 
 service nginx restart
-"""
-
-sudo sed -i "/^\tlocation \/ {$/a \\\t\tadd_header X-Served-By $HOSTNAME;" /etc/nginx/sites-available/default
-sudo service nginx restart
