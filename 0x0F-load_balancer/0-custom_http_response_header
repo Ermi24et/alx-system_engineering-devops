@@ -6,6 +6,7 @@ sudo apt-get update
 sudo apt-get -y install nginx
 
 # mkdir /etc/nginx/html
+server_hostname=$(hostname)
 touch /etc/nginx/html/index.html
 
 echo "Hello World!" > /etc/nginx/html/index.html
@@ -16,21 +17,20 @@ echo "server {
     listen 80 default_server;
     listen [::]:80 default_server;
 
-    root /var/www/html;
+    root /etc/nginx/html;
     index index.html index.htm;
 
     server_name _;
 
     location / {
-        add_header X-Served-By \$hostname;
-        try_files \$uri \$uri/ =404;
+        add_header X-Served-By $server_hostname;
     }
 
     location /redirect_me {
         return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
     }
 
-    error_page 404 /404_error.html;
+    	error_page 404 /404_error.html;
     location /404 {
         root /etc/nginx/html;
         internal;
