@@ -14,5 +14,5 @@ def top_ten(subreddit):
         res_json = res.json()
         for item in res_json['data']['children']:
             print(item['data']['title'])
-    except:
+    except Exception:
         print('None')
