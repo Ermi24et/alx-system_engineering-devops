@@ -38,4 +38,3 @@ def count_words(subreddit, word_list, dict_count={}, after=None):
                                reverse=True):
                 if pair[1]:
                     print('{}: {}'.format(pair[0].strip(), pair[1]))
-
