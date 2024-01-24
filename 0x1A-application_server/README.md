@@ -1,6 +1,7 @@
 # 0x1A. Application server
 `DevOps` `SysAdmin`
 
+![app_server](https://github.com/Ermi24et/alx-system_engineering-devops/blob/master/0x1A-application_server/app_server.jpg)
 ## Background Context
 
 
